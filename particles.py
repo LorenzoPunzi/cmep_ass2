@@ -3,7 +3,6 @@ Assignment 2 of CMEP course : Particle parent and child classes
 '''
 import math
 
-
 class EnergyTooLowError(ValueError):
     def __init__(self): 
         super().__init__(f'{self.__class__.__name__} : the particle\'s energy must be >= its mass!')
@@ -23,7 +22,6 @@ class BetaError(ValueError):
 class GammaTooLowError(ValueError):
     def __init__(self): 
         super().__init__(f'{self.__class__.__name__} : the particle\'s gamma must be >= 1!')
-
 
 
 class Particle:
@@ -119,6 +117,8 @@ class Particle:
         except ValueError as e:
             print(e)
 
+    def printstats(self):
+        print(f'The particle {self.__name} has charge {self.__charge} [e] and mass {self.__mass} [MeV]. Its momentum is {self.__momentum} [MeV].')
 
 
 
