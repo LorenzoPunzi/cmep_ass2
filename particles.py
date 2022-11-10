@@ -1,5 +1,5 @@
 '''
-Assignment 2 of CMEP course : Particle parent and child classes
+Assignment 2 of CMEP course : Particle parent and child classes. Could be improved because child particles are not very DRY
 '''
 import math
 
@@ -25,29 +25,13 @@ class GammaTooLowError(ValueError):
 
 
 class Particle:
-
+    '''Class describing a particle in general'''
     def __init__(self, mass, charge=0, name=None, momentum=0.):
         '''Class constructor'''
         self.__mass = mass #in MeV/c^2
         self.__momentum = momentum #in MeV/c
         self.__charge = charge #in e
         self.__name = name
-
-    @property
-    def charge(self):
-        return self.__charge
-
-    @charge.setter
-    def charge(self, new_charge):
-        print(f'You cannot change the particle\'s charge. It is {self.__charge} and stays so')
-
-    @property
-    def name(self):
-        return self.__name
-
-    @name.setter
-    def name(self, name):
-        print(f'You cannot change the particle\'s name. It is {self.__name} and stays so')
 
     @property
     def momentum(self):
@@ -121,5 +105,66 @@ class Particle:
         print(f'The particle {self.__name} has charge {self.__charge} [e] and mass {self.__mass} [MeV]. Its momentum is {self.__momentum} [MeV].')
 
 
+class Alpha(Particle):
+    '''Class describing an Alpha particle'''
+    def __init__(self,momentum=0):
+        self.__mass = 3727
+        self.__charge = 2
+        self.__name = 'Alpha'
+        Particle.__init__(self, self.__mass, self.__charge, self.__name, momentum)
 
+    @property
+    def charge(self):
+        return self.__charge
 
+    @charge.setter
+    def charge(self, new_charge):
+        print(f'You cannot change the alpha particles\'s charge. It is {self.__charge} [e] and stays so')
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        print(f'You cannot change the alpha particles\'s name. It is {self.__name} and stays so')
+
+    @property
+    def mass(self):
+        return self.__mass
+
+    @mass.setter
+    def mass(self, mass):
+        print(f'You cannot change the alpha particles\'s mass. It is {self.__mass} [MeV] and stays so')
+
+class Proton(Particle):
+    '''Class describing a Proton'''
+    def __init__(self,momentum=0):
+        self.__mass = 938
+        self.__charge = 1
+        self.__name = 'Proton'
+        Particle.__init__(self, self.__mass, self.__charge, self.__name, momentum)
+
+    @property
+    def charge(self):
+        return self.__charge
+
+    @charge.setter
+    def charge(self, new_charge):
+        print(f'You cannot change the proton\'s charge. It is {self.__charge} [e] and stays so')
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        print(f'You cannot change the proton\'s name. It is {self.__name} and stays so')
+
+    @property
+    def mass(self):
+        return self.__mass
+
+    @mass.setter
+    def mass(self, mass):
+        print(f'You cannot change the proton\'s mass. It is {self.__mass} [MeV] and stays so')
